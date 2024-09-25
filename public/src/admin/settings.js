@@ -147,25 +147,38 @@ define('admin/settings', [
 			}, 1500);
 		}
 	};
-
+	// used chatGPT to understand js
 	function handleUploads() {
+		console.log('Kajal Mehta');
 		$('#content input[data-action="upload"]').each(function () {
 			const uploadBtn = $(this);
-			uploadBtn.on('click', function () {
-				uploader.show({
-					title: uploadBtn.attr('data-title'),
-					description: uploadBtn.attr('data-description'),
-					route: uploadBtn.attr('data-route'),
-					params: {},
-					showHelp: uploadBtn.attr('data-help') ? uploadBtn.attr('data-help') === 1 : undefined,
-					accept: uploadBtn.attr('data-accept'),
-				}, function (image) {
-					$('#' + uploadBtn.attr('data-target')).val(image);
-				});
-			});
+			uploadBtn.on('click', handleClick(uploadBtn));
 		});
 	}
 
+	function handleClick(uploadBtn) {
+		return function () {
+			const uploadOptions = getUploadOptions(uploadBtn);
+			uploader.show(uploadOptions, function (image) {
+				updateTargetValue(uploadBtn, image);
+			});
+		};
+	}
+
+	function getUploadOptions(uploadBtn) {
+		return {
+			title: uploadBtn.attr('data-title'),
+			description: uploadBtn.attr('data-description'),
+			route: uploadBtn.attr('data-route'),
+			params: {},
+			showHelp: uploadBtn.attr('data-help') ? uploadBtn.attr('data-help') === 1 : undefined,
+			accept: uploadBtn.attr('data-accept'),
+		};
+	}
+
+	function updateTargetValue(uploadBtn, image) {
+		$('#' + uploadBtn.attr('data-target')).val(image);
+	}
 	function setupTagsInput() {
 		$('[data-field-type="tagsinput"]').tagsinput({
 			tagClass: 'badge bg-info',
