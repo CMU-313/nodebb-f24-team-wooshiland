@@ -36,7 +36,7 @@ const passportAuthenticateAsync = function (req, res) {
 	});
 };
 
-// // permisssions for admin to see username on anonymous posts
+// permisssions for admin to see username on anonymous posts
 // const showUsername = async (userId, currentUser) => {
 // 	const isAdmin = await user.isAdministrator(currentUser.uid);
 
