@@ -44,6 +44,14 @@ module.exports = function (Posts) {
 			if (!uidToUser.hasOwnProperty(post.uid)) {
 				post.uid = 0;
 			}
+
+			// Check if the post is anonymous
+			if (post.anonymous) {
+				if (!user.isAdministrator(uid)) {
+					post.user.username = 'Anonymous User';
+				}
+			}
+
 			post.user = uidToUser[post.uid];
 			Posts.overrideGuestHandle(post, post.handle);
 			post.handle = undefined;
