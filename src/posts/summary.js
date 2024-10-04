@@ -45,13 +45,6 @@ module.exports = function (Posts) {
 				post.uid = 0;
 			}
 
-			// Check if the post is anonymous
-			if (post.anonymous) {
-				if (!user.isAdministrator(uid)) {
-					post.user.username = 'Anonymous User';
-				}
-			}
-
 			post.user = uidToUser[post.uid];
 			Posts.overrideGuestHandle(post, post.handle);
 			post.handle = undefined;
@@ -61,6 +54,13 @@ module.exports = function (Posts) {
 			post.deleted = post.deleted === 1;
 			post.timestampISO = utils.toISOString(post.timestamp);
 			post.anonymous = post.anonymous ? post.anonymous : 'false'; // checks if anonymous is true if not then false
+
+			// Check if the post is anonymous
+			if (post.anonymous) {
+				if (!user.isAdministrator(uid)) {
+					post.user.username = 'Anonymous User';
+				}
+			}
 		});
 
 		posts = posts.filter(post => tidToTopic[post.tid]);
