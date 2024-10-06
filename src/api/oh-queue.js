@@ -1,17 +1,13 @@
-
-// bing copilot
-
+// source chatGPT
+// const controllers = require.main.require('./src/controllers');
 'use strict';
-
-const ohQueueController = require.main.require('./src/controllers/ohQueue');
-
 module.exports = (app, middleware) => {
-	app.get('/oh-queue', middleware.buildHeader, ohQueueController.get);
-
-	app.get('/api/oh-queue', ohQueueController.get);
+	app.get('/oh-queue', middleware.buildHeader, (req, res) => {
+		res.render('oh-queue', {});
+	});
+	app.get('/api/oh-queue', (req, res) => {
+		res.json({
+			message: 'Welcome to the Office Hours Queue page!',
+		});
+	});
 };
-
-
-
-
-
