@@ -9,7 +9,7 @@ module.exports = (app, middleware) => {
 	});
 	app.get('/api/oh-queue', (req, res) => {
 		res.json({
-			message: 'Welcome to the Office Hours Queue page!',
+			//message: 'Welcome to the Office Hours Queue page!',
 		});
 	});
 };
