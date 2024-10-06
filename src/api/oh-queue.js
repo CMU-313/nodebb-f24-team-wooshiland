@@ -1,6 +1,8 @@
 // source chatGPT
 // const controllers = require.main.require('./src/controllers');
+
 'use strict';
+
 module.exports = (app, middleware) => {
 	app.get('/oh-queue', middleware.buildHeader, (req, res) => {
 		res.render('oh-queue', {});
