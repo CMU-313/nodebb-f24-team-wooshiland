@@ -25,6 +25,7 @@ module.exports = function (utils, Benchpress, relative_path) {
 		userAgentIcons,
 		buildAvatar,
 		increment,
+		anonChecker,
 		generateWroteReplied,
 		generateRepliedTo,
 		generateWrote,
@@ -316,6 +317,10 @@ module.exports = function (utils, Benchpress, relative_path) {
 		}
 		output += `<span${attr2String(attributes)} component="${component || 'avatar/icon'}" style="${styles.join(' ')} background-color: ${userObj['icon:bgColor']}">${userObj['icon:text']}</span>`;
 		return output;
+	}
+
+	function anonChecker(anonymousVal) {
+		return anonymousVal === 'true';
 	}
 
 	function increment(value, inc) {

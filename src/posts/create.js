@@ -19,7 +19,11 @@ module.exports = function (Posts) {
 		const content = data.content.toString();
 		const timestamp = data.timestamp || Date.now();
 		const isMain = data.isMain || false;
-		const isAnon = true;
+		// const { anonymous } = data;
+
+		const anonymous = true;
+		// const anonymous = data.getElementById('anonymousInput').value === 'true';
+		console.log('get anon value:', anonymous);
 
 		if (!uid && parseInt(uid, 10) !== 0) {
 			throw new Error('[[error:invalid-uid]]');
@@ -36,7 +40,7 @@ module.exports = function (Posts) {
 			tid: tid,
 			content: content,
 			timestamp: timestamp,
-			anonymous: isAnon,
+			anonymous: anonymous,
 		};
 
 		if (data.toPid) {
