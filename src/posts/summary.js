@@ -20,7 +20,7 @@ module.exports = function (Posts) {
 		options.parse = options.hasOwnProperty('parse') ? options.parse : true;
 		options.extraFields = options.hasOwnProperty('extraFields') ? options.extraFields : [];
 
-		const fields = ['pid', 'tid', 'content', 'uid', 'timestamp', 'deleted', 'upvotes', 'downvotes', 'replies', 'handle'].concat(options.extraFields);
+		const fields = ['pid', 'tid', 'content', 'uid', 'timestamp', 'isAnon', 'deleted', 'upvotes', 'downvotes', 'replies', 'handle'].concat(options.extraFields);
 
 		let posts = await Posts.getPostsFields(pids, fields);
 		posts = posts.filter(Boolean);
@@ -53,13 +53,13 @@ module.exports = function (Posts) {
 			post.isMainPost = post.topic && post.pid === post.topic.mainPid;
 			post.deleted = post.deleted === 1;
 			post.timestampISO = utils.toISOString(post.timestamp);
-			post.anonymous = post.anonymous ? post.anonymous : 'false'; // checks if anonymous is true if not then false
 
 			// Check if the post is anonymous
-			if (post.anonymous) {
-				if (!user.isAdministrator(uid)) {
-					post.user.username = 'Anonymous User';
-				}
+			// Reference to ChatGPT
+			if (post.isAnon && !user.isAdministrator(uid)) {
+				post.user.username = 'Anonymous User';
+			} else {
+				post.user.username = users.find(u => u.uid === post.uid).username;
 			}
 		});
 

@@ -78,6 +78,14 @@ searchController.search = async function (req, res, next) {
 		recordSearch(data),
 	]);
 
+	// Reference to ChatGPT
+	// Add anonymous field to each post
+	searchData.posts = searchData.posts.map((post) => {
+		post.anonymous = post.isAnon ? 'Anonymous User' : '';
+		delete post.isAnon;
+		return post;
+	});
+
 	searchData.pagination = pagination.create(page, searchData.pageCount, req.query);
 	searchData.multiplePages = searchData.pageCount > 1;
 	searchData.search_query = validator.escape(String(req.query.term || ''));

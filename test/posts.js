@@ -701,6 +701,49 @@ describe('Post\'s', () => {
 		});
 	});
 
+	// tests for admin permission to see anonymous poster's user name
+	// Reference to ChatGPT
+	describe('Post Anonymity', () => {
+		let uid;
+		let postData;
+		let adminUid;
+
+		before(async () => {
+			// Create a regular user
+			uid = await user.create({ username: 'regularuser' });
+
+			// Create an admin user
+			adminUid = await user.create({ username: 'adminuser' });
+			await groups.join('administrators', adminUid); // Make the user an admin
+
+			// Create an anonymous post
+			({ postData } = await topics.post({
+				uid: uid,
+				cid: cid,
+				title: 'Anonymous Post Test',
+				content: 'This is an anonymous post',
+				isAnon: true,
+			}));
+		});
+
+		it('should display "Anonymous User" if the post is anonymous and the user is not an admin', async () => {
+			// Simulate a request by a non-admin user
+			const postSummary = await posts.getPostSummaryByPids([postData.pid], uid, {});
+			// console.log(postSummary[0]);
+
+			// Check that the username is set to "Anonymous User"
+			assert.strictEqual(postSummary[0].user.username, 'Anonymous User');
+		});
+
+		it('should display the real username if the post is anonymous but the user is an admin', async () => {
+			// Simulate a request by an admin user
+			const postSummary = await posts.getPostSummaryByPids([postData.pid], adminUid, {});
+			// console.log(postSummary[0]);
+			// Check that the username is the actual user's username
+			assert.strictEqual(postSummary[0].user.username, 'regularuser');
+		});
+	});
+
 	it('should get recent poster uids', (done) => {
 		topics.reply({
 			uid: voterUid,

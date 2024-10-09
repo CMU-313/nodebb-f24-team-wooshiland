@@ -40,6 +40,10 @@ postsAPI.get = async function (caller, data) {
 		post.content = '[[topic:post-is-deleted]]';
 	}
 
+	// Reference to ChatGPT
+	// Add the anonymous field to the response
+	post.anonymous = post.isAnon || false;
+
 	return post;
 };
 
@@ -62,6 +66,11 @@ postsAPI.getSummary = async (caller, { pid }) => {
 
 	const postsData = await posts.getPostSummaryByPids([pid], caller.uid, { stripTags: false });
 	posts.modifyPostByPrivilege(postsData[0], topicPrivileges);
+
+	// Reference to ChatGPT
+	// Add the anonymous field to the post summary
+	postsData[0].anonymous = postsData[0].isAnon || false;
+
 	return postsData[0];
 };
 
