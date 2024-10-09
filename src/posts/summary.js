@@ -44,8 +44,15 @@ module.exports = function (Posts) {
 			if (!uidToUser.hasOwnProperty(post.uid)) {
 				post.uid = 0;
 			}
-
+			
 			post.user = uidToUser[post.uid];
+			// Check if the post is anonymous
+			// Reference to ChatGPT
+			if (post.anonymous && !user.isAdministrator(uid)) {
+				post.user.username = 'Anonymous User';
+			} else {
+				post.user.username = users.find(u => u.uid === post.uid).username;
+			}
 			Posts.overrideGuestHandle(post, post.handle);
 			post.handle = undefined;
 			post.topic = tidToTopic[post.tid];
@@ -54,13 +61,6 @@ module.exports = function (Posts) {
 			post.deleted = post.deleted === 1;
 			post.timestampISO = utils.toISOString(post.timestamp);
 			post.anonymous = post.anonymous ? post.anonymous : 'false'; // makes sure anonymous is a required field for every post, false if anonymous field is undefined
-			// Check if the post is anonymous
-			// Reference to ChatGPT
-			if (post.anonymous && !user.isAdministrator(uid)) {
-				post.user.username = 'Anonymous User';
-			} else {
-				post.user.username = users.find(u => u.uid === post.uid).username;
-			}
 		});
 
 		posts = posts.filter(post => tidToTopic[post.tid]);
