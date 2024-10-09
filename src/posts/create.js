@@ -22,7 +22,7 @@ module.exports = function (Posts) {
 		// const isAnon = data.isAnonymous || false;
 		// this is in conflict with the hard coding in main branch
 		// since the hard coding is what we need right now, commeting the non-hard coded line out
-		const isAnon = false;
+		const isAnon = true;
 
 		if (!uid && parseInt(uid, 10) !== 0) {
 			throw new Error('[[error:invalid-uid]]');
