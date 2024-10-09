@@ -56,7 +56,7 @@ module.exports = function (Posts) {
 
 			// Check if the post is anonymous
 			// Reference to ChatGPT
-			if (post.isAnon && !user.isAdministrator(uid)) {
+			if (post.anonymous && !user.isAdministrator(uid)) {
 				post.user.username = 'Anonymous User';
 			} else {
 				post.user.username = users.find(u => u.uid === post.uid).username;
