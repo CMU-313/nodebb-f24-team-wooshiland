@@ -44,7 +44,6 @@ module.exports = function (Posts) {
 			if (!uidToUser.hasOwnProperty(post.uid)) {
 				post.uid = 0;
 			}
-			
 			post.user = uidToUser[post.uid];
 			// Check if the post is anonymous
 			// Reference to ChatGPT
