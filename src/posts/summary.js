@@ -61,7 +61,6 @@ module.exports = function (Posts) {
 			} else {
 				post.user.username = users.find(u => u.uid === post.uid).username;
 			}
-			post.anonymous = post.anonymous ? post.anonymous : 'false'; // makes sure anonymous is a required field for every post, false if anonymous field is undefined
 		});
 
 		posts = posts.filter(post => tidToTopic[post.tid]);
