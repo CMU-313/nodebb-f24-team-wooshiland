@@ -25,7 +25,7 @@ module.exports = function (utils, Benchpress, relative_path) {
 		userAgentIcons,
 		buildAvatar,
 		increment,
-		anonChecker,
+		anonTrue,
 		generateWroteReplied,
 		generateRepliedTo,
 		generateWrote,
@@ -319,7 +319,9 @@ module.exports = function (utils, Benchpress, relative_path) {
 		return output;
 	}
 
-	function anonChecker(anonymousVal) {
+	// this help function is used inside node_modules/nodebb-theme-harmony/templates/partials/topic/post.tpl
+	// to check whether to indicate objects depending on the anonymous data field value
+	function anonTrue(anonymousVal) {
 		return anonymousVal === 'true';
 	}
 

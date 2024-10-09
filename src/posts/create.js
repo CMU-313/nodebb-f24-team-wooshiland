@@ -19,11 +19,12 @@ module.exports = function (Posts) {
 		const content = data.content.toString();
 		const timestamp = data.timestamp || Date.now();
 		const isMain = data.isMain || false;
-		// const { anonymous } = data;
-
-		const anonymous = true;
+		// const anonymous = false; // hard code anonymous to become false
+		const anonymous = true; // hard code anonymous to become true
+		// attempted to get id from the tpl but we don't know how to do it
 		// const anonymous = data.getElementById('anonymousInput').value === 'true';
-		console.log('get anon value:', anonymous);
+		// log anonymous field to see which variable it is
+		// console.log('get anon value:', anonymous);
 
 		if (!uid && parseInt(uid, 10) !== 0) {
 			throw new Error('[[error:invalid-uid]]');
@@ -40,7 +41,7 @@ module.exports = function (Posts) {
 			tid: tid,
 			content: content,
 			timestamp: timestamp,
-			anonymous: anonymous,
+			anonymous: anonymous, // set anonymous datafield to be anonymous value
 		};
 
 		if (data.toPid) {
