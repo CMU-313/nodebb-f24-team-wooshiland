@@ -41,7 +41,7 @@ module.exports = function (Posts) {
 			tid: tid,
 			content: content,
 			timestamp: timestamp,
-			anonymous: anonymous,
+			anonymous: anonymous, // set anonymous datafield to be anonymous value
 		};
 
 		if (data.toPid) {
