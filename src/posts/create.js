@@ -19,10 +19,10 @@ module.exports = function (Posts) {
 		const content = data.content.toString();
 		const timestamp = data.timestamp || Date.now();
 		const isMain = data.isMain || false;
-		// const isAnon = data.isAnonymous || false;
+		// const anonymous = data.isAnonymous || false;
 		// this is in conflict with the hard coding in main branch
 		// since the hard coding is what we need right now, commeting the non-hard coded line out
-		const anonymous = data.isAnonymous || false;
+		const anonymous = true;
 
 		if (!uid && parseInt(uid, 10) !== 0) {
 			throw new Error('[[error:invalid-uid]]');

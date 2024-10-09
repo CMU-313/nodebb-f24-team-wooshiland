@@ -722,7 +722,7 @@ describe('Post\'s', () => {
 				cid: cid,
 				title: 'Anonymous Post Test',
 				content: 'This is an anonymous post',
-				isAnon: true,
+				anonymous: true,
 			}));
 		});
 

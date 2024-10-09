@@ -54,7 +54,6 @@ module.exports = function (Posts) {
 			post.deleted = post.deleted === 1;
 			post.timestampISO = utils.toISOString(post.timestamp);
 
-			post.anonymous = post.anonymous ? post.anonymous : 'false';
 			// Check if the post is anonymous
 			// Reference to ChatGPT
 			if (post.anonymous && !user.isAdministrator(uid)) {
@@ -62,6 +61,7 @@ module.exports = function (Posts) {
 			} else {
 				post.user.username = users.find(u => u.uid === post.uid).username;
 			}
+			post.anonymous = post.anonymous ? post.anonymous : 'false';
 		});
 
 		posts = posts.filter(post => tidToTopic[post.tid]);
