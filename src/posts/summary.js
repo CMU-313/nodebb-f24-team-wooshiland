@@ -54,7 +54,6 @@ module.exports = function (Posts) {
 			post.deleted = post.deleted === 1;
 			post.timestampISO = utils.toISOString(post.timestamp);
 			post.anonymous = post.anonymous ? post.anonymous : 'false'; // makes sure anonymous is a required field for every post, false if anonymous field is undefined
-
 			// Check if the post is anonymous
 			// Reference to ChatGPT
 			if (post.anonymous && !user.isAdministrator(uid)) {
