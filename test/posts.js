@@ -696,6 +696,7 @@ describe('Post\'s', () => {
 				assert(data[0].user);
 				assert(data[0].topic);
 				assert(data[0].category);
+				assert(data[0].anonymous); // Anonymous data field exists
 				done();
 			});
 		});
@@ -707,10 +708,12 @@ describe('Post\'s', () => {
 		let uid;
 		let postData;
 		let adminUid;
+		let uid2;
 
 		before(async () => {
-			// Create a regular user
+			// Create two regular user
 			uid = await user.create({ username: 'regularuser' });
+			uid2 = await user.create({ username: 'regularuser2' });
 
 			// Create an admin user
 			adminUid = await user.create({ username: 'adminuser' });
@@ -728,7 +731,7 @@ describe('Post\'s', () => {
 
 		it('should display "Anonymous User" if the post is anonymous and the user is not an admin', async () => {
 			// Simulate a request by a non-admin user
-			const postSummary = await posts.getPostSummaryByPids([postData.pid], uid, {});
+			const postSummary = await posts.getPostSummaryByPids([postData.pid], uid2, {});
 			// console.log(postSummary[0]);
 
 			// Check that the username is set to "Anonymous User"

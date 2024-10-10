@@ -81,8 +81,7 @@ searchController.search = async function (req, res, next) {
 	// Reference to ChatGPT
 	// Add anonymous field to each post
 	searchData.posts = searchData.posts.map((post) => {
-		post.anonymous = post.isAnon ? 'Anonymous User' : '';
-		delete post.isAnon;
+		post.anonymous = post.anonymous ? 'Anonymous User' : '';
 		return post;
 	});
 
