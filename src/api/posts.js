@@ -42,7 +42,7 @@ postsAPI.get = async function (caller, data) {
 
 	// Reference to ChatGPT
 	// Add the anonymous field to the response
-	// post.anonymous = post.isAnon || false;
+	// post.anonymous = post.anonymous || false;
 
 	return post;
 };
