@@ -1,0 +1,49 @@
+kajalm@SurfaceGo2:~/nodebb-f24-team-wooshiland$ npm install -g stryker-cli
+
+changed 41 packages in 4s
+
+4 packages are looking for funding
+  run `npm fund` for details
+kajalm@SurfaceGo2:~/nodebb-f24-team-wooshiland$ npm install --save-dev @stryker-mutator/core
+npm warn deprecated osenv@0.1.5: This package is no longer supported.
+npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@8.1.0: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.1.7: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.1.7: Glob versions prior to v9 are no longer supported
+
+added 572 packages, changed 2 packages, and audited 1475 packages in 11s
+
+225 packages are looking for funding
+  run `npm fund` for details
+
+23 vulnerabilities (9 low, 11 moderate, 3 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+kajalm@SurfaceGo2:~/nodebb-f24-team-wooshiland$ npx stryker init
+✔ Are you using one of these frameworks? Then select a preset configuration. None/other
+✔ Which test runner do you want to use? If your test runner isn't listed here, you can choose "command" (it uses your
+`npm test` command, but will come with a big performance penalty) command
+✔ What build command should be executed just before running your tests? For example: "npm run build" or "tsc -b" (leave
+empty when this is not needed). none
+✔ Which reporter(s) do you want to use? html, clear-text, progress, dashboard
+✔ Which package manager do you want to use? npm
+✔ What file type do you want for your config file? JavaScript
+Writing & formatting stryker.config.mjs ...
+Note: Your .gitignore file has been updated to include recommended git ignore patterns for Stryker
+Done configuring stryker. Please review "stryker.config.mjs", you might need to configure your test runner correctly.
+Let's kill some mutants with this command: `stryker run`
