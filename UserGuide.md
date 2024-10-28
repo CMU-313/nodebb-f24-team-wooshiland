@@ -16,6 +16,7 @@ Setting up front-end repository: https://docs.google.com/document/d/1HCb6FL6noy3
 Features Front-end Testing Step-by-Step
 
 Posting as an Anonymous User
+
 1. Go to the forum you want to post in
 2. Click the New Topic Button
 3. Add the post (topic title, post content)
@@ -23,6 +24,7 @@ Posting as an Anonymous User
 5. Submit the post
 
 OH Queue
+
 1. Navigate to the left menu bar
 2. Click the "Helping Hands" icon to go to the OH Queue Page
 3. If the page does not appear intially or is not interactive, please refresh
@@ -31,12 +33,13 @@ OH Queue
 
 Automated Tests
 Testing for OH Queue Controller and Page Route - test/controllers.js (line 95)
+
 - The main changes have been made in the front end repository, the backend test is used to ensure the page loaded properly.
 
 Testing for User Viewing Permissions - test/posts.js (lines 705-749)
+
 - In this test, an anonymous post is created, as well as a sample admin user and a sample regular user. This test checks that for the admin user, when they view the anonymous post, they should see the username. In addition, the test checks that when the regular user sees the post, they should only see the username as "Anonymous User".
 
 Testing for Anonymous Data Fields - test/posts.js (line 699)
+
 - the backend test is used to ensure that the anonymous data field exists.
-
-
