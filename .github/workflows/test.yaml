@@ -74,6 +74,12 @@ jobs:
         run: |
           node app --setup="${SETUP}" --ci="${CI}"
           
+      - name: Run Prettier Write first time
+        run: npx prettier . --write
+
+      - name: Run Prettier Write second time
+        run: npx prettier . --write
+        
       - name: Run Prettier Check
         run: npx prettier . --check
 
