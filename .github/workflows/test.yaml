@@ -77,6 +77,9 @@ jobs:
       - name: Run Prettier
         run: npx prettier --check "**/*.{js,ts,jsx,tsx,json,css,html,md}"
 
+      - name: Run ESLint
+        run: npm run lint
+
       - name: Node tests
         run: npm test
 
