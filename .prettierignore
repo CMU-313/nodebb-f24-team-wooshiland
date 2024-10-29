@@ -1,1 +1,4 @@
-build/public/*.min.js
+build/public/admin/settings-navigation.f31ba7263c15da727bc2.min.js
+config.json
+package-lock.json
+package.json
