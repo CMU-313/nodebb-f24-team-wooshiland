@@ -73,6 +73,12 @@ jobs:
             }
         run: |
           node app --setup="${SETUP}" --ci="${CI}"
+    
+      - name: Run Prettier Write
+        run: npx prettier . --write
+        
+      - name: Run Prettier Check
+        run: npx prettier . --check
         
       - name: Run ESLint
         run: npm run lint
