@@ -1,13 +1,12 @@
 // source chatGPT
 
-'use strict';
+"use strict";
 
 module.exports = (app, middleware) => {
-	app.get('/oh-queue', middleware.buildHeader, (req, res) => {
-		res.render('oh-queue', {});
+	app.get("/oh-queue", middleware.buildHeader, (req, res) => {
+		res.render("oh-queue", {});
 	});
-	app.get('/api/oh-queue', (req, res) => {
-		res.json({
-		});
+	app.get("/api/oh-queue", (req, res) => {
+		res.json({});
 	});
 };
