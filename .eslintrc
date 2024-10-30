@@ -6,6 +6,6 @@
 	],
 	"rules": {
 	    "no-bitwise": "error",
-	    "comma-dangle": ["error", "never"]
+	    "comma-dangle": "off"
 	}
 }
