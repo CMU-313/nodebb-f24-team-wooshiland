@@ -1,5 +1,5 @@
 {
-	"extends": "nodebb"
+	"extends": "nodebb",
 	"extends": [
 	    "some-other-config-you-use",
 	    "prettier"
