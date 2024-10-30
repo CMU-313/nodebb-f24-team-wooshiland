@@ -3,5 +3,9 @@
 	[
 	    "nodebb",
 	    "prettier"
-	]
+	],
+	"rules": {
+	    "no-bitwise": "error",
+	    "comma-dangle": ["error", "never"]
+	}
 }
