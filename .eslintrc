@@ -7,5 +7,7 @@
 	"rules": {
 	    "no-bitwise": "off",
 	    "comma-dangle": "off"
+	    "no-unused-vars": "off", 
+    	    "no-useless-concat": "off"
 	}
 }
