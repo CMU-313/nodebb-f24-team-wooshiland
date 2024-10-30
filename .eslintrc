@@ -2,12 +2,13 @@
 	"extends": 
 	[
 	    "nodebb",
-	    "prettier"
+	    "prettier",
+	    "eslint-config-prettier"
 	],
 	"rules": {
-	    "no-bitwise": "off",
 	    "comma-dangle": "off",
-	    "no-unused-vars": "off", 
-    	    "no-useless-concat": "off"
+            "no-bitwise": "off",
+            "no-unused-vars": "off",
+            "no-useless-concat": "off"
 	}
 }
