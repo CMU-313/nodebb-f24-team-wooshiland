@@ -2,8 +2,6 @@
 	"extends": 
 	[
 	    "nodebb",
-	    "eslint:recommended",         
-    	    "plugin:prettier/recommended",
 	    "prettier"
 	],
 	"rules": {
