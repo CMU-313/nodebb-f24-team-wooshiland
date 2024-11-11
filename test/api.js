@@ -665,7 +665,7 @@ describe('API', async () => {
 			if (allowedExceptions.includes(prop)) {
 				return; // Skip allowed exceptions
 			}
-			
+
 			if (additionalProperties) { // All bets are off
 				return;
 			}
