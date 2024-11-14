@@ -73,7 +73,16 @@ jobs:
             }
         run: |
           node app --setup="${SETUP}" --ci="${CI}"
-
+          
+      - name: Install eslint-config-prettier
+        run: npm install --save-dev eslint-config-prettier
+        
+      - name: Run Prettier Write
+        run: npx prettier . --write
+        
+      - name: Run Prettier Check
+        run: npx prettier --ignore-path .prettierignore --check "**/*.{js,ts,jsx,tsx,json,css,html,md}"
+        
       - name: Run ESLint
         run: npm run lint
 

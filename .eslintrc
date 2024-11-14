@@ -1,3 +1,15 @@
 {
-	"extends": "nodebb"
+	"extends": 
+	[
+	    "nodebb",
+	    "prettier",
+	    "eslint-config-prettier"
+	],
+	"rules": {
+	    "comma-dangle": "off",
+            "no-bitwise": "off",
+            "no-unused-vars": "off",
+            "no-useless-concat": "off",
+	    "no-script-url": "off"
+	}
 }
