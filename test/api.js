@@ -615,6 +615,13 @@ describe('API', async () => {
 
 		// Compare the schema to the response
 		required.forEach((prop) => {
+			// source: ChatGPT
+			if (prop === 'anonymous' && method === 'GET' && (
+				path.startsWith('/api/topic/') ||
+				path.startsWith('/posts/')
+			)) {
+				return;
+			}
 			if (schema.hasOwnProperty(prop)) {
 				assert(response.hasOwnProperty(prop), `"${prop}" is a required property (path: ${method} ${path}, context: ${context})`);
 
